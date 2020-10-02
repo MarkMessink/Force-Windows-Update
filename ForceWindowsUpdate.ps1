@@ -12,13 +12,14 @@
   Log file: ilog_ForceWindowsUpdate.txt
   
 .NOTES
+  Executing this script may take a long time to finish
 
 .EXAMPLE
   .\ForceWindowsUpdate.ps1
 
 #>
 
-# Aanmaken standaard logpath (als deze nog niet bestaat)
+# Create Default Intune Log folder (is not exist)
 $path = "C:\IntuneLogs"
 If(!(test-path $path))
 {
@@ -36,7 +37,7 @@ Start-Transcript $logPath -Append -Force
 	Write-Output "----- Install PSWindowsUpdate"
 	Install-Module -Name PSWindowsUpdate -Force
 	Write-Output "----- Install Windows Updates"
-	Get-WindowsUpdate -AcceptAll -Download -Install
+	Get-WindowsUpdate -AcceptAll -Download -Install -IgnoreReboot
 	Write-Output "----- Ready"
     Write-Output "-------------------------------------------------------------------"
 
