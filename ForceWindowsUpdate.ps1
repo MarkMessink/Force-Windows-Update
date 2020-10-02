@@ -40,7 +40,7 @@ Start-Transcript $logPath -Append -Force
 	Write-Output "----- Check version Windows"
 	$version = [system.environment]::OSversion.version.build
 	Write-Output "----- Windows version = $version"
-	if ($version -lt "18362") {    
+	if ($version -lt "20000") {    
 	Write-Output "----- Install NuGet Provider"
 	Install-PackageProvider -Name NuGet -Force
 	Write-Output "----- Install PSWindowsUpdate"
