@@ -14,6 +14,10 @@
 .NOTES
   Executing this script may take a long time to finish
   Check buildnumbers --> https://docs.microsoft.com/en-us/windows/release-information/
+  1903 = 18362
+  1909 = 18363
+  20H1 = 19041
+  20H2 = 19042
 
 .EXAMPLE
   .\ForceWindowsUpdate.ps1
