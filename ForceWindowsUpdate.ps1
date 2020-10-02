@@ -9,7 +9,7 @@
   None
 
 .OUTPUTS
-  Log file: ilog_ForceWindowsUpdate.txt
+  Log file: ilog_ps_ForceWindowsUpdate_1903.txt
   
 .NOTES
   Executing this script may take a long time to finish
@@ -31,7 +31,7 @@ If(!(test-path $path))
       New-Item -ItemType Directory -Force -Path $path
 }
 
-$logPath = "$path\ilog_ForceWindowsUpdate.txt"
+$logPath = "$path\ilog_ps_ForceWindowsUpdate_1903.txt"
 
 #Start logging
 Start-Transcript $logPath -Append -Force
@@ -40,7 +40,7 @@ Start-Transcript $logPath -Append -Force
 	Write-Output "----- Check version Windows"
 	$version = [system.environment]::OSversion.version.build
 	Write-Output "----- Windows version = $version"
-	if ($version -lt "20000") {    
+	if ($version -lt "18362") {    
 	Write-Output "----- Install NuGet Provider"
 	Install-PackageProvider -Name NuGet -Force
 	Write-Output "----- Install PSWindowsUpdate"
