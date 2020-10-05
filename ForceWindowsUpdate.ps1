@@ -46,7 +46,7 @@ Start-Transcript $logPath -Append -Force
 	Write-Output "----- Install PSWindowsUpdate"
 	Install-Module -Name PSWindowsUpdate -Force
 	Write-Output "----- Install Windows Updates"
-	Get-WindowsUpdate -AcceptAll -Download -Install -IgnoreReboot
+	Get-WindowsUpdate -AcceptAll -Download -Install -IgnoreReboot | FT
 	Write-Output "----- Ready"
 	}
 	else {
