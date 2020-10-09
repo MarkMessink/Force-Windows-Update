@@ -18,6 +18,7 @@
   1909 = 18363
   20H1 = 19041
   20H2 = 19042
+  21H1 - 20201 (Insider preview DEV)
 
 .EXAMPLE
   .\ForceWindowsUpdate.ps1
@@ -50,7 +51,7 @@ Start-Transcript $logPath -Append -Force
 	Write-Output "----- Ready"
 	}
 	else {
-	Write-Output "----- No updates installed, Windows version to high Version = $version"
+	Write-Output "----- No updates installed, Windows 10 Version = $version"
 	}
 	
     Write-Output "-------------------------------------------------------------------"
