@@ -9,7 +9,7 @@
   None
 
 .OUTPUTS
-  Log file: ilog_ps_ForceWindowsUpdate_1903.txt
+  Log file: ilog_ps_ForceWindowsUpdate_<build>.txt
   
 .NOTES
   Executing this script may take a long time to finish
@@ -32,7 +32,7 @@ If(!(test-path $path))
       New-Item -ItemType Directory -Force -Path $path
 }
 
-$logPath = "$path\ilog_ps_ForceWindowsUpdate_1903.txt"
+$logPath = "$path\ilog_ps_ForceWindowsUpdate_18362.txt"
 
 #Start logging
 Start-Transcript $logPath -Append -Force
