@@ -18,7 +18,7 @@
   1909 = 18363
   20H1 = 19041
   20H2 = 19042
-  21H1 - 20201 (Insider preview DEV)
+  21H1 - 20231 (Insider preview DEV)
 
 .EXAMPLE
   .\ForceWindowsUpdate.ps1
@@ -32,7 +32,7 @@ If(!(test-path $path))
       New-Item -ItemType Directory -Force -Path $path
 }
 
-$logPath = "$path\ilog_ps_ForceWindowsUpdate_18362.txt"
+$logPath = "$path\pslog_ForceWindowsUpdate_18362.txt"
 
 #Start logging
 Start-Transcript $logPath -Append -Force
