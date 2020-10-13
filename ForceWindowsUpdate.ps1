@@ -51,7 +51,8 @@ Start-Transcript $logPath -Append -Force
 	Write-Output "----- Ready"
 	}
 	else {
-	Write-Output "----- No updates installed, Windows 10 Version = $version"
+	Write-Output ""
+	Write-Output "----- No updates installed."
 	}
 	
     Write-Output "-------------------------------------------------------------------"
