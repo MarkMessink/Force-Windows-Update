@@ -1,15 +1,18 @@
 <#
 .SYNOPSIS
     Force Windows Update Powershell script
-	Mark Messink 02-10-2020
+	Mark Messink 16-10-2020
 
 .DESCRIPTION
+	This script updates Windows when buildnumber is to low
+
+
  
 .INPUTS
   None
 
 .OUTPUTS
-  Log file: ilog_ps_ForceWindowsUpdate_<build>.txt
+  Log file: pslog_ForceWindowsUpdate_<build>.txt
   
 .NOTES
   Executing this script may take a long time to finish
@@ -22,11 +25,10 @@
 
 .EXAMPLE
   .\ForceWindowsUpdate.ps1
-  
 #>
 
 # Buildnumber to update to:
-$buildnumber = "18362"
+$buildnumber = "19041"
 
 # Create Default Intune Log folder (is not exist)
 $path = "C:\IntuneLogs"
@@ -49,7 +51,7 @@ Start-Transcript $logPath -Append -Force
 	Install-PackageProvider -Name NuGet -Force
 	Write-Output "----- Install PSWindowsUpdate"
 	Install-Module -Name PSWindowsUpdate -Force
-	Write-Output "----- Install Windows Updates"
+	Write-Output "----- Install Windows Updates (no reboot)"
 	Get-WindowsUpdate -AcceptAll -Download -Install -IgnoreReboot | FT
 	Write-Output "----- Check new version Windows"
 	$version_new = [system.environment]::OSversion.version
