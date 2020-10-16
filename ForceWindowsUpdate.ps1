@@ -16,14 +16,17 @@
   Check buildnumbers --> https://docs.microsoft.com/en-us/windows/release-information/
   1903 = 18362
   1909 = 18363
-  20H1 = 19041
-  20H2 = 19042
+  2004 = 19041
+  2009 = 19042
   21H1 - 20231 (Insider preview DEV)
 
 .EXAMPLE
   .\ForceWindowsUpdate.ps1
-
+  
 #>
+
+# Buildnumber to update to:
+$buildnumber = "18362"
 
 # Create Default Intune Log folder (is not exist)
 $path = "C:\IntuneLogs"
@@ -32,7 +35,7 @@ If(!(test-path $path))
       New-Item -ItemType Directory -Force -Path $path
 }
 
-$logPath = "$path\pslog_ForceWindowsUpdate_18362.txt"
+$logPath = "$path\pslog_ForceWindowsUpdate_$buildnumber.txt"
 
 #Start logging
 Start-Transcript $logPath -Append -Force
@@ -41,14 +44,16 @@ Start-Transcript $logPath -Append -Force
 	Write-Output "----- Check version Windows"
 	$version = [system.environment]::OSversion.version.build
 	Write-Output "----- Windows version = $version"
-	if ($version -lt "18362") {    
+	if ($version -lt "$buildnumber") {    
 	Write-Output "----- Install NuGet Provider"
 	Install-PackageProvider -Name NuGet -Force
 	Write-Output "----- Install PSWindowsUpdate"
 	Install-Module -Name PSWindowsUpdate -Force
 	Write-Output "----- Install Windows Updates"
 	Get-WindowsUpdate -AcceptAll -Download -Install -IgnoreReboot | FT
-	Write-Output "----- Ready"
+	Write-Output "----- Check new version Windows"
+	$version_new = [system.environment]::OSversion.version
+	Write-Output "----- New Windows version = $version_new"
 	}
 	else {
 	Write-Output ""
