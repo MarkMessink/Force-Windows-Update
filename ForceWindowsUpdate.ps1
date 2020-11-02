@@ -20,8 +20,8 @@
   1903 = 18362
   1909 = 18363
   2004 = 19041
-  2009 = 19042
-  21H1 - 20231 (Insider preview DEV)
+  20H2 = 19042
+  21H1 - 20231 (DEV)
 
 .EXAMPLE
   .\ForceWindowsUpdate.ps1
@@ -48,9 +48,9 @@ Start-Transcript $logPath -Append -Force
 	Write-Output "----- Windows version = $version"
 	if ($version -lt "$buildnumber") {    
 	Write-Output "----- Install NuGet Provider"
-	Install-PackageProvider -Name NuGet -Force
+	Install-PackageProvider -Name NuGet -RequiredVersion "2.8.5.201" -Force -Verbose
 	Write-Output "----- Install PSWindowsUpdate"
-	Install-Module -Name PSWindowsUpdate -Force
+	Install-Module -Name PSWindowsUpdate -Force -Verbose
 	Write-Output "----- Install Windows Updates (no reboot)"
 	Get-WindowsUpdate -AcceptAll -Download -Install -IgnoreReboot | FT
 	Write-Output "----- Check new version Windows"
