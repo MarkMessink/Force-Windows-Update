@@ -57,7 +57,12 @@ Start-Transcript $logPath -Append -Force
 		Write-Output "----- Import module PSWindowsUpdate"
 		import-module PSWindowsUpdate #-Verbose
 		Write-Output "----- Accept, Download and Install Windows Updates (noReboot)"
-		#1909=KB4577671, 2004=KB4579311, 20H2=KB4562830
+		<#
+		1909=KB4577671
+		2004=KB4579311 
+		20H2=KB4562830
+		#>
+		
 		Get-WindowsUpdate -KBArticle "KB4577671", "KB4579311", "KB4562830" -AcceptAll -Download -Install -IgnoreReboot | FT Result, KB, Title
 	}
 	else {
