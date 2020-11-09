@@ -1,13 +1,18 @@
 <#
 .SYNOPSIS
-    Force Windows Update Powershell script
+   Force Windows Update Powershell script
 	Mark Messink 16-10-2020
+	
+	info: https://www.powershellgallery.com/packages/PSWindowsUpdate/
+	
+	Check buildnumbers: https://docs.microsoft.com/en-us/windows/release-information/
+
 
 .DESCRIPTION
 	This script updates Windows when buildnumber is to low
+	 - Intune minimum operating system
+	 - Intune device enrollment restrictions
 
-
- 
 .INPUTS
   None
 
@@ -54,8 +59,6 @@ Start-Transcript $logPath -Append -Force
 	Write-Output "----- Install Windows Updates (no reboot)"
 	Get-WindowsUpdate -AcceptAll -Download -Install -IgnoreReboot | FT
 	Write-Output "----- Check new version Windows"
-	$version_new = [system.environment]::OSversion.version
-	Write-Output "----- New Windows version = $version_new"
 	}
 	else {
 	Write-Output ""
